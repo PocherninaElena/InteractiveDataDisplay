@@ -1,6 +1,8 @@
-﻿/// <reference path="../ext/jasmine/jasmine.js" />
-/// <reference path="../ext/jquery/dist/jquery.min.js" />
+﻿/// <reference path="../node_modules/jasmine-core/lib/jasmine-core/jasmine.js" />
+/// <reference path="../node_modules/rx/dist/rx.all.js" />
+/// <reference path="../node_modules/jquery/dist/jquery.js" />	
 /// <reference path="../dist/idd.js" />
+
 
 // quick reference for Jasmine framework:
 // http://pivotal.github.com/jasmine/ 

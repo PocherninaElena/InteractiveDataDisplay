@@ -1,6 +1,6 @@
-﻿/// <reference path="../ext/jasmine/jasmine.js" />
-/// <reference path="../ext/jquery/dist/jquery.min.js" />
-/// <reference path="../ext/svg.js/dist/svg.js" />
+﻿/// <reference path="../node_modules/jasmine-core/lib/jasmine-core/jasmine.js" />
+/// <reference path="../node_modules/rx/dist/rx.all.js" />
+/// <reference path="../node_modules/jquery/dist/jquery.js" /> 
 /// <reference path="../dist/idd.js" />
 
 describe('idd.js exportToSvg', function () {
@@ -30,9 +30,9 @@ describe('idd.js exportToSvg', function () {
         var points = svgline.attr("points").split(' ');
         expect(points.length).toBe(3);
         //style
-        expect(svgline.style("stroke")).toBe("#4169ed");
+        expect(svgline.style("stroke")).toBe("rgb(65, 105, 237)");
         expect(svgline.style("fill")).toBe("none");
-        expect(svgline.style("stroke-width")).toBe("1px");
+        expect(svgline.style("stroke-width")).toBe("1");
     });
     it('markers export', function () {
         var markers = plot.markers("mark", { x: [1, 2, 3], y: [1, 2, 3], color: "green", border: "gray" });
@@ -48,7 +48,7 @@ describe('idd.js exportToSvg', function () {
         expect(children.length).toBe(3);
         for (var i = 0; i < children.length; i++) {
             expect(children[i].node.nodeName).toBe("rect");
-            expect(children[i].style("stroke")).toBe("#808080");
+            expect(children[i].style("stroke")).toBe("gray");
             expect(children[i].attr("fill")).toBe("green");
         }
 

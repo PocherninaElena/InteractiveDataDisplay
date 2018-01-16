@@ -120,18 +120,19 @@
             }
         },
         jasmine: {
-            options: {
-                keepRunner: true,
-                vendor: [
-                    "ext/jquery/dist/jquery.js",
-                    "ext/rxjs/dist/rx.lite.js",
-                    "ext/svg.js/dist/svg.js",
-                    "ext/jquery-mousewheel/jquery.mousewheel.js",
-                    "<%= concat.dist.dest %>"
-                ]
-            },
-
-            src: ['test/*.js'] 
+            main: {
+				options: {
+					keepRunner: true,
+					vendor: [
+						"node_modules/jquery/dist/jquery.js",
+						"node_modules/rx/dist/rx.lite.js",
+						"node_modules/svg.js/dist/svg.js",
+						"node_modules/jquery-mousewheel/jquery.mousewheel.js",
+						"<%= concat.dist.dest %>"
+					]
+				},
+				src: ['test/*.js']
+			}
         },
         copy: {
             main: {
@@ -142,13 +143,7 @@
                     { src: 'idd.heatmapworker.js', dest: 'dist/idd.heatmapworker.js' }
                 ]
             },
-        },
-        bower: {
-            options: {
-                copy: false
-            },
-            install: { }
-        },
+		},
         base64: {
             heatmap_worker: {         
                 files: {
@@ -182,16 +177,6 @@
                 files: [{ src: "test/manual/main.ts", outDir: 'test/manual' }]
             }
         },
-        wiredep: {
-            task: {
-                src: [
-                  'samples/viewer/*.html'
-                ],
-                options: {
-                    // https://github.com/taptapship/wiredep#configuration
-                }
-            }
-        },
         tsd: {
             refresh: {
                 options: {
@@ -215,15 +200,13 @@
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
+	grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-base64');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks("grunt-ts");
-    grunt.loadNpmTasks('grunt-wiredep');
-    grunt.loadNpmTasks('grunt-tsd');
-    grunt.loadNpmTasks('grunt-bower-task');;
-
+	grunt.loadNpmTasks('grunt-tsd');
+	
     grunt.registerTask('update-tsd', ['tsd']);
-    grunt.registerTask('default', ['bower', 'concat:heatmap_worker', 'base64', 'concat:heatmap_worker_embedded', 'concat:styles', 'concat:dist_ko', 'ts:dist', 'concat:dist', 'uglify', 'copy', 'concat:umd', 'concat:umdTs', 'wiredep', 'ts:testGlobal', 'ts:test', 'jasmine']);
-    grunt.registerTask('test', ['bower', 'jasmine']);
+    grunt.registerTask('default', ['concat:heatmap_worker', 'base64', 'concat:heatmap_worker_embedded', 'concat:styles', 'concat:dist_ko', 'ts:dist', 'concat:dist', 'uglify', 'copy', 'concat:umd', 'concat:umdTs', 'ts:testGlobal', 'ts:test', 'jasmine:main']);
+    grunt.registerTask('test', ['jasmine:main']);
 };

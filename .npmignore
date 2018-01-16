@@ -1,3 +1,10 @@
+/ext/**
+/node_modules/**
+/generated/**
+/idd.heatmapworker.js
+/.grunt/**
+/.tscache/**
+/typings/**
 /samples/**
 /sln/**
 /src/**
@@ -9,9 +16,12 @@ _SpecRunner.html
 jsconfig.json
 Gruntfile.js
 IDDSamples.html
-package.json
 tsd.json
 RELEASE_NOTES.md
 /.vscode/**
+/.vs/**
 /test/**
 !/dist/**
+.baseDir.*
+debug.log
+_SpecRunner.html

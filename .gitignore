@@ -1,3 +1,4 @@
+/.vs/**
 /ext/**
 /dist/**
 /node_modules/**
